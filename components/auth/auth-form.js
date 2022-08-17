@@ -43,14 +43,18 @@ function AuthForm() {
 
       if(!result.error){
         router.replace('/profile');
+      } else {
+        alert(result.error);
       }
 
     } else {
       try {
         const result = await createUser(userData);
-        console.log(result);
+        if(result.success){
+          setIsLogin(true);
+        }
       } catch (error) {
-        console.log(error);
+        alert(error.message);
       }
     }
   }

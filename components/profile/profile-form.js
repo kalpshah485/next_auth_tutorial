@@ -17,7 +17,11 @@ function ProfileForm() {
       }
     });
     const data = await res.json();
-    console.log(data);
+    if (!res.ok) {
+      alert(data.message || 'Something Went Wrong!');
+    } else {
+      alert(data.message);
+    }
   }
   return (
     <form className={classes.form} onSubmit={handleChangePassword}>
